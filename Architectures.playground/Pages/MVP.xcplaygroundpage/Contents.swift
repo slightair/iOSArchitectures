@@ -1,61 +1,13 @@
 import Foundation
 import UIKit
-import Chameleon
 
-struct ColorItem {
-    let name: String
-    let color: UIColor
-}
-
-final class ColorItemClient {
-    func requestItems(completion: (([ColorItem]) -> Void)?) {
-        completion?([
-            ColorItem(name: "red", color: UIColor.flatRed()),
-            ColorItem(name: "orange", color: UIColor.flatOrange()),
-            ColorItem(name: "yellow", color: UIColor.flatYellow()),
-            ColorItem(name: "green", color: UIColor.flatGreen()),
-            ColorItem(name: "blue", color: UIColor.flatSkyBlue()),
-        ])
-    }
-}
-
-protocol ColorItemListView: UITableViewDataSource {
+protocol ColorItemListView: class {
     var items: [ColorItem] { get set }
 }
 
-protocol ColorItemListViewPresenter {
+protocol ColorItemListViewPresenter: class {
     init(view: ColorItemListView, client: ColorItemClient)
     func loadItems()
-}
-
-final class ColorItemCell: UITableViewCell {
-    let colorView = UIView()
-    let nameLabel = UILabel()
-
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        addSubview(colorView)
-        addSubview(nameLabel)
-
-        colorView.layer.cornerRadius = 3.0
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    func update(with colorItem: ColorItem) {
-        colorView.backgroundColor = colorItem.color
-        nameLabel.text = colorItem.name
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        colorView.frame = CGRect(x: 8, y: (frame.height - 32) / 2, width: 32, height: 32)
-        nameLabel.frame = CGRect(x: colorView.frame.maxX + 8, y: (frame.height - 21) / 2, width: 200, height: 21)
-    }
 }
 
 final class ViewController: UITableViewController, ColorItemListView {
@@ -68,9 +20,7 @@ final class ViewController: UITableViewController, ColorItemListView {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         title = "MVP"
-
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Load", style: .plain, target: self, action: #selector(ViewController.didTapLoadButton))
     }
 
@@ -108,14 +58,14 @@ final class ColorItemListPresenter: ColorItemListViewPresenter {
     }
 }
 
-// live rendering
-
-import PlaygroundSupport
-
 let client = ColorItemClient()
 let view = ViewController()
 let presenter = ColorItemListPresenter(view: view, client: client)
 view.presenter = presenter
+
+// live rendering
+
+import PlaygroundSupport
 
 let navigationController = UINavigationController(rootViewController: view)
 navigationController.view.frame = CGRect(x: 0, y: 0, width: 375, height: 667)

@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5751DBE11E051554007A9706 /* MVC.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MVC.playground; sourceTree = "<group>"; };
+		5751DBE11E051554007A9706 /* Architectures.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Architectures.playground; sourceTree = "<group>"; };
 		579C39F51E050F9A00109ABD /* Architectures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Architectures.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		579C39F81E050F9A00109ABD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		579C39FA1E050F9A00109ABD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,7 +31,6 @@
 		579C3A151E05100A00109ABD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		579C3A161E05100A00109ABD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		579C3A171E05100A00109ABD /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
-		57E666E31E051B5F00A3F117 /* MVP.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MVP.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +51,7 @@
 		579C39EC1E050F9A00109ABD = {
 			isa = PBXGroup;
 			children = (
-				5751DBE11E051554007A9706 /* MVC.playground */,
-				57E666E31E051B5F00A3F117 /* MVP.playground */,
+				5751DBE11E051554007A9706 /* Architectures.playground */,
 				579C39F71E050F9A00109ABD /* Architectures */,
 				579C39F61E050F9A00109ABD /* Products */,
 				579C3A0F1E050FD000109ABD /* Frameworks */,
