@@ -31,6 +31,7 @@
 		579C3A151E05100A00109ABD /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		579C3A161E05100A00109ABD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		579C3A171E05100A00109ABD /* Chameleon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chameleon.framework; path = Carthage/Build/iOS/Chameleon.framework; sourceTree = "<group>"; };
+		57E666E31E051B5F00A3F117 /* MVP.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MVP.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +53,7 @@
 			isa = PBXGroup;
 			children = (
 				5751DBE11E051554007A9706 /* MVC.playground */,
+				57E666E31E051B5F00A3F117 /* MVP.playground */,
 				579C39F71E050F9A00109ABD /* Architectures */,
 				579C39F61E050F9A00109ABD /* Products */,
 				579C3A0F1E050FD000109ABD /* Frameworks */,
