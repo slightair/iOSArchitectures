@@ -3,5 +3,6 @@
     <pages>
         <page name='MVC'/>
         <page name='MVP'/>
+        <page name='MVVM'/>
     </pages>
 </playground>
