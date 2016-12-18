@@ -4,5 +4,6 @@
         <page name='MVC'/>
         <page name='MVP'/>
         <page name='MVVM'/>
+        <page name='MVVM (Rx)'/>
     </pages>
 </playground>

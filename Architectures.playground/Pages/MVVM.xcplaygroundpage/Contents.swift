@@ -11,7 +11,7 @@ protocol ColorItemListViewModelProtocol: class {
 final class ViewController: UITableViewController {
     var viewModel: ColorItemListViewModelProtocol! {
         didSet {
-            viewModel.itemsDidChange = { viewModel in
+            viewModel.itemsDidChange = { [unowned self] viewModel in
                 self.items = viewModel.items
             }
         }
