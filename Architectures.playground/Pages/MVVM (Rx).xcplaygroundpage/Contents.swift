@@ -17,7 +17,6 @@ extension Reactive where Base: ColorItemClient {
 }
 
 final class ViewController: UITableViewController {
-    private let viewModel = ColorItemListViewModel(client: ColorItemClient())
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -27,32 +26,30 @@ final class ViewController: UITableViewController {
         tableView.register(ColorItemCell.self, forCellReuseIdentifier: "Cell")
         tableView.dataSource = nil
 
-        viewModel.items.asObservable()
+        let loadButtonItem = UIBarButtonItem(title: "Load", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = loadButtonItem
+
+        let client = ColorItemClient()
+        let viewModel = ColorItemListViewModel(loadButtonTaps: loadButtonItem.rx.tap.asObservable(),
+                                               client: client)
+
+        viewModel.items
             .bindTo(tableView.rx.items(cellIdentifier: "Cell", cellType: ColorItemCell.self)) { _, colorItem, cell in
                 cell.update(with: colorItem)
             }
             .addDisposableTo(disposeBag)
-
-        let loadButtonItem = UIBarButtonItem(title: "Load", style: .plain, target: nil, action: nil)
-        loadButtonItem.rx.tap
-            .bindTo(viewModel.loadItemsTrigger)
-            .addDisposableTo(disposeBag)
-        navigationItem.rightBarButtonItem = loadButtonItem
     }
 }
 
 final class ColorItemListViewModel {
-    let loadItemsTrigger = PublishSubject<Void>()
-    let items = Variable<[ColorItem]>([])
-    private let disposeBag = DisposeBag()
+    let items: Observable<[ColorItem]>
 
-    required init(client: ColorItemClient) {
-        loadItemsTrigger
-            .flatMap {
+    required init(loadButtonTaps: Observable<Void>, client: ColorItemClient) {
+        items = loadButtonTaps
+            .flatMapLatest {
                 client.rx.requestItems()
             }
-            .bindTo(items)
-            .addDisposableTo(disposeBag)
+            .shareReplay(1)
     }
 }
 
